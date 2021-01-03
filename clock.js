@@ -1,9 +1,9 @@
-var wakeuptime = 7;
+var wakeuptime = 5;
 var noon = 12;
 var lunchtime = 12;
-var naptime = lunchtime + 2;
-var partytime;
-var evening = 18;
+var naptime = lunchtime + 1;
+var stretchtime;
+var evening = 17;
 
 // Getting it to show the current time on the page
 var showCurrentTime = function () {
@@ -15,11 +15,11 @@ var showCurrentTime = function () {
     var hours = currentTime.getHours();
     var minutes = currentTime.getMinutes();
     var seconds = currentTime.getSeconds();
-    var meridian = "AM";
+    var meridian = "오전";
 
     // Set hours
     if (hours >= noon) {
-        meridian = "PM";
+        meridian = "오후";
     }
 
     if (hours > noon) {
@@ -37,7 +37,7 @@ var showCurrentTime = function () {
     }
 
     // put together the string that displays the time
-    var clockTime = hours + ":" + minutes + ":" + seconds + " " + meridian + "!";
+    var clockTime =meridian + " " + hours + ":" + minutes + ":" + seconds + "!";
 
     clock.innerText = clockTime;
 };
@@ -47,38 +47,38 @@ var updateClock = function () {
     var time = new Date().getHours();
     var messageText;
     var image =
-        "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/normalTime.jpg";
+        "https://www.petfoodindustry.com/ext/resources/Images-by-month-year/17_08/cat-business-money-market-computer.jpg?1545928182";
 
     var timeEventJS = document.getElementById("timeEvent");
     var lolcatImageJS = document.getElementById("lolcatImage");
 
-    if (time == partytime) {
+    if (time == stretchtime) {
         image =
-            "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/partyTime.jpg";
-        messageText = "Let's party!";
+            "https://i.redd.it/od4l9jd2ja921.jpg";
+        messageText = "Stretch!";
     } else if (time == wakeuptime) {
         image =
-            "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/cat1.jpg";
+            "https://i.imgur.com/PUqxPbeh.jpg";
         messageText = "Wake up!";
     } else if (time == lunchtime) {
         image =
-            "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/cat2.jpg";
-        messageText = "Let's have some lunch!";
+            "https://bowwowinsurance.com.au/wp-content/uploads/2020/04/Persian-or-Chinchila-cat-eating-vegetable-in-owner-hand.jpg";
+        messageText = "Let's have lunch!";
     } else if (time == naptime) {
         image =
-            "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/cat3.jpg";
-        messageText = "Sleep tight!";
+            "https://images2.alphacoders.com/106/106110.jpg";
+        messageText = "Sleep for the work!";
     } else if (time < noon) {
         image =
-            "https://pbs.twimg.com/profile_images/378800000532546226/dbe5f0727b69487016ffd67a6689e75a.jpeg";
-        messageText = "Good morning!";
+            "https://lh3.googleusercontent.com/proxy/DnrwJw63HTmLfMM50cPopmAUgxTO_AVfTw6lj-a5PNW8kRL3Ukk3FbHYylZhum3ms0M7FdTKg2taMLKYloHyzFcv1AXpak8H9D_KGPngFUhIeWAnZymbUDZKqs2-QLOm";
+        messageText = "Morning work!";
     } else if (time >= evening) {
-        image = "https://upload.wikimedia.org/wikipedia/commons/8/8c/Cat_sleep.jpg";
-        messageText = "Good evening!";
+        image = "https://imgflip.com/s/meme/Cool-Cat-Stroll.jpg";
+        messageText = "Go home!";
     } else {
         image =
-            "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/08/normalTime.jpg";
-        messageText = "Good afternoon!";
+            "https://www.petfoodindustry.com/ext/resources/Images-by-month-year/17_08/cat-business-money-market-computer.jpg?1545928182";
+        messageText = "Afternoon work!";
     }
 
     console.log(messageText);
@@ -93,23 +93,23 @@ updateClock();
 var oneSecond = 1000;
 setInterval(updateClock, oneSecond);
 
-// Getting the Party Time Button To Work
-var partyButton = document.getElementById("partyTimeButton");
+// Getting the Stretch Time Button To Work
+var stretchButton = document.getElementById("stretchTimeButton");
 
-var partyEvent = function () {
-    if (partytime < 0) {
-        partytime = new Date().getHours();
-        partyTimeButton.innerText = "Party Over!";
-        partyTimeButton.style.backgroundColor = "#0A8DAB";
+var stretchEvent = function () {
+    if (stretchtime < 0) {
+        stretchtime = new Date().getHours();
+        stretchTimeButton.innerText = "Stretch Finish!";
+        stretchTimeButton.style.backgroundColor = "#0A8DAB";
     } else {
-        partytime = -1;
-        partyTimeButton.innerText = "Party Time!";
-        partyTimeButton.style.backgroundColor = "#222";
+        stretchtime = -1;
+        stretchTimeButton.innerText = "Stretch Time!";
+        stretchTimeButton.style.backgroundColor = "#222";
     }
 };
 
-partyButton.addEventListener("click", partyEvent);
-partyEvent();
+stretchButton.addEventListener("click", stretchEvent);
+stretchEvent();
 
 // Activates Wake-Up selector
 var wakeUpTimeSelector = document.getElementById("wakeUpTimeSelector");
@@ -137,5 +137,3 @@ var napEvent = function () {
 };
 
 napTimeSelector.addEventListener("change", napEvent);
-
-//kkk
